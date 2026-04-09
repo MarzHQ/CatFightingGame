@@ -2,7 +2,7 @@
 Alien Cat VS Cowboy Cat
 
 ## Repository
-<Link to your project's public GitHub respository>
+[<Link to your project's public GitHub respository>](https://github.com/MarzHQ/CatFightingGame.git)
 
 ## Description
 So the purpose of this code is to help me understand better and learn new things about Pygame.
