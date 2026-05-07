@@ -42,6 +42,36 @@ def draw_bg():
     scale_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
     screen.blit(scale_bg, (0,0))
 
+def draw_health_bar(health, x, y):
+    ratio = health / 100
+    pygame.draw.rect(screen, BLACK, (x - 2, y - 2, 404, 34))
+    pygame.draw.rect(screen, RED, (x, y, 400, 30))
+    pygame.draw.rect(screen, YELLOW, (x, y, 400 * ratio, 30))
+
+class Fighter():
+    def __init__(self, player, x, y, flip, data, sprite_sheet, animation_steps, sound):
+        self.player = player
+        self.size = data[0]
+        self.image_scale = data[1]
+        self.offset = data[2]
+        self.flip = flip
+        self.animation_list = self.load_images(sprite_sheet, animation_steps)
+        self.action = 0
+        self.frame_index = 0
+        self.image = self.animation_list[self.action][self.frame_index]
+        self.update_time = pygame.time.get_ticks()
+        self.rect = pygame.Rect((x, y, 80, 180))
+        self.vel_y = 0
+        self.running = False
+        self.jump = False
+        self.attacking = False
+        self.attack_type = 0
+        self.attack_cooldown = 0
+        self.attack_sound = sound
+        self.hit = False
+        self.alive = True
+        self.health = 100
+
 def main():
 
     run = True
