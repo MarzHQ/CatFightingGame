@@ -256,7 +256,23 @@ def main():
         fighter_1.draw(screen)
         fighter_2.draw(screen)
 
-        
+        if round_over == False:
+            if fighter_1.alive == False:
+                score[1] += 1
+                round_over = True
+                round_over_time = pygame.time.get_ticks()
+            elif fighter_2.alive == False:
+                score[0] += 1
+                round_over = True
+                round_over_time = pygame.time.get_ticks()
+        else:
+            screen.blit(victory_img, (0, 0))
+            if pygame.time.get_ticks() - round_over_time > ROUND_OVER_COOLDOWN:
+                round_over = False
+                intro_count = 3
+                fighter_1 = Fighter(1, 200, 400, False, COWBOY_DATA, cowboy_sheet, COWBOY_ANIMATION_STEPS, hit_fx)
+                fighter_2 = Fighter(2, 700, 400, True, ALIEN_DATA, alien_sheet, ALIEN_ANIMATION_STEPS, alienhit_fx)
+
 
         pygame.display.update()
         for event in pygame.event.get():
