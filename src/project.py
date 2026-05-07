@@ -9,6 +9,11 @@ SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("CatFightingGame")
 
+clock = pygame.time.Clock()
+FPS = 60
+YELLOW = (255, 255, 0)
+RED = (255, 0, 0)
+BLACK = (0, 0, 0)
 
 pygame.mixer.music.load("audio/pixelparadise.mp3")
 pygame.mixer.music.set_volume(0.5)
@@ -41,6 +46,14 @@ def main():
 
     run = True
     while run:
+
+        clock.tick(FPS)
+
+        draw_bg()
+
+
+
+        
 
         pygame.display.update()
         for event in pygame.event.get():
