@@ -221,6 +221,15 @@ class Fighter():
 
 def main():
 
+    intro_count = 0
+    last_count_update = pygame.time.get_ticks()
+    score = [0, 0]
+    round_over = False
+    ROUND_OVER_COOLDOWN = 2000
+
+    fighter_1 = Fighter(1, 200, 400, False, COWBOY_DATA, cowboy_sheet, COWBOY_ANIMATION_STEPS, hit_fx)
+    fighter_2 = Fighter(2, 700, 400, True, ALIEN_DATA, alien_sheet, ALIEN_ANIMATION_STEPS, alienhit_fx)
+
     run = True
     while run:
 
