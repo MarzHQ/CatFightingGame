@@ -199,6 +199,26 @@ class Fighter():
                     self.attacking = False
                     self.attack_cooldown = 20
 
+    def attack(self, target):
+        if self.attack_cooldown == 0:
+            self.attacking = True
+            self.attack_sound.play()
+            attacking_rect = pygame.Rect(self.rect.centerx -  (2 * self.rect.width * self.flip), 
+                                     self.rect.y, 2 * self.rect.width, self.rect.height)
+            if attacking_rect.colliderect(target.rect):
+                target.health -= 10
+                target.hit = True
+
+    def update_action(self, new_action):
+        if new_action != self.action:
+            self.action = new_action
+            self.frame_index = 0
+            self.update_time = pygame.time.get_ticks()
+    
+    def draw(self, surface):
+        img = pygame.transform.flip(self.image, self.flip, False)
+        surface.blit(img, (self.rect.x - (self.offset[0] * self.image_scale), self.rect.y - (self.offset[1] * self.image_scale)))
+
 def main():
 
     run = True
