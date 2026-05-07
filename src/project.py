@@ -72,6 +72,49 @@ class Fighter():
         self.alive = True
         self.health = 100
 
+    def move(self, screen_width, screen_height, surface, target, round_over):
+        SPEED = 10
+        GRAVITY = 2
+        dx = 0
+        dy = 0
+        self.running = False
+        self.attack_type = 0
+        key = pygame.key.get_pressed()
+
+        if self.attacking == False and self.alive == True and round_over == False:
+            if self.player == 1:
+                if key[pygame.K_a]:
+                    dx = -SPEED
+                    self.running = True
+                if key[pygame.K_d]:
+                    dx = SPEED
+                    self.running = True
+                if key[pygame.K_w] and self.jump == False:
+                    self.vel_y = -30
+                    self.jump = True
+                if key[pygame.K_r] or key[pygame.K_t]:
+                    self.attack(target)
+                    if key[pygame.K_r]:
+                        self.attack_type = 1
+                    if key[pygame.K_t]:
+                        self.attack_type = 2
+            if self.player == 2:
+                if key[pygame.K_LEFT]:
+                    dx = -SPEED
+                    self.running = True
+                if key[pygame.K_RIGHT]:
+                    dx = SPEED
+                    self.running = True
+                if key[pygame.K_UP] and self.jump == False:
+                    self.vel_y = -30
+                    self.jump = True
+                if key[pygame.K_KP1] or key[pygame.K_KP2]:
+                    self.attack(target)
+                    if key[pygame.K_KP1]:
+                        self.attack_type = 1
+                    if key[pygame.K_KP2]:
+                        self.attack_type = 2
+
 def main():
 
     run = True
