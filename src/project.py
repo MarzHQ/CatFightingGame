@@ -29,7 +29,13 @@ victory_img = pygame.image.load("images/icons/victoryRoyale.png").convert_alpha(
 count_font = pygame.font.Font("fonts/SuperAdorable.ttf", 80)
 score_font = pygame.font.Font("fonts/SuperAdorable.ttf", 30)
 
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
 
+def draw_bg():
+    scale_bg = pygame.transform.scale(bg_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen.blit(scale_bg, (0,0))
 
 def main():
 
