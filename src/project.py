@@ -138,6 +138,29 @@ class Fighter():
                     if key[pygame.K_KP2]:
                         self.attack_type = 2
 
+        self.vel_y += GRAVITY
+        dy += self.vel_y
+
+        if self.rect.left + dx < 0:
+            dx = -self.rect.left
+        if self.rect.right + dx > screen_width:
+            dx = screen_width - self.rect.right
+        if self.rect.bottom + dy > screen_height - 30:
+            self.vel_y = 0
+            self.jump = False
+            dy = screen_height - 30 - self.rect.bottom
+            
+        if target.rect.centerx > self.rect.centerx:
+            self.flip = False
+        else:
+            self.flip = True
+
+        if self.attack_cooldown > 0:
+            self.attack_cooldown -= 1
+
+        self.rect.x += dx
+        self.rect.y += dy
+
 def main():
 
     run = True
