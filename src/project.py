@@ -161,6 +161,25 @@ class Fighter():
         self.rect.x += dx
         self.rect.y += dy
 
+    def update(self):
+        if self.health <= 0:
+            self.health = 0
+            self.alive = False
+            self.update_action(6)
+        elif self.hit == True:
+            self.update_action(5)
+        elif self.attacking == True:
+            if self.attack_type == 1:
+                self.update_action(3)
+            elif self.attack_type == 2:
+                self.update_action(4)
+        elif self.jump == True:
+            self.update_action(2)
+        elif self.running == True:
+            self.update_action(1)
+        else:
+            self.update_action(0)
+
 def main():
 
     run = True
