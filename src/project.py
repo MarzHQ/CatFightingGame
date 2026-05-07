@@ -28,3 +28,18 @@ victory_img = pygame.image.load("images/icons/victoryRoyale.png").convert_alpha(
 
 count_font = pygame.font.Font("fonts/SuperAdorable.ttf", 80)
 score_font = pygame.font.Font("fonts/SuperAdorable.ttf", 30)
+
+
+
+def main():
+
+    run = True
+    while run:
+
+        pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+    pygame.quit()
+
+if __name__ == "__main__": main()            
