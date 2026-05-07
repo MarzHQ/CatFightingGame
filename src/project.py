@@ -15,6 +15,15 @@ YELLOW = (255, 255, 0)
 RED = (255, 0, 0)
 BLACK = (0, 0, 0)
 
+COWBOY_SIZE = 162
+COWBOY_SCALE = 4
+COWBOY_OFFSET = [72, 70]
+COWBOY_DATA = [COWBOY_SIZE, COWBOY_SCALE, COWBOY_OFFSET]
+ALIEN_SIZE = 162
+ALIEN_SCALE = 4
+ALIEN_OFFSET = [72, 70]
+ALIEN_DATA = [ALIEN_SIZE, ALIEN_SCALE, ALIEN_OFFSET]
+
 pygame.mixer.music.load("audio/pixelparadise.mp3")
 pygame.mixer.music.set_volume(0.5)
 pygame.mixer.music.play(-1, 0, 5000)
@@ -33,6 +42,9 @@ victory_img = pygame.image.load("images/icons/victoryRoyale.png").convert_alpha(
 
 count_font = pygame.font.Font("fonts/SuperAdorable.ttf", 80)
 score_font = pygame.font.Font("fonts/SuperAdorable.ttf", 30)
+
+COWBOY_ANIMATION_STEPS = [1, 8, 1, 7, 7, 3 ,7]
+ALIEN_ANIMATION_STEPS = [1, 8, 1, 7, 7, 3 ,7]
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
