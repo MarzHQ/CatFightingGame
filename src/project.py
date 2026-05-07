@@ -250,7 +250,11 @@ def main():
                 intro_count -= 1
                 last_count_update = pygame.time.get_ticks()
 
+        fighter_1.update()
+        fighter_2.update()
 
+        fighter_1.draw(screen)
+        fighter_2.draw(screen)
 
         
 
