@@ -180,6 +180,25 @@ class Fighter():
         else:
             self.update_action(0)
 
+        animation_cooldown = 70
+
+        self.image = self.animation_list[self.action][self.frame_index]
+        if pygame.time.get_ticks() - self.update_time > animation_cooldown:
+            self.frame_index += 1 
+            self.update_time = pygame.time.get_ticks()
+        if self.frame_index >= len(self.animation_list[self.action]):
+            if self.alive == False:
+                self.frame_index = len(self.animation_list[self.action]) - 1
+            else:
+                self.frame_index = 0
+                if self.action == 3 or self.action == 4:
+                    self.attacking = False
+                    self.attack_cooldown = 20
+                if self.action == 5:
+                    self.hit = False
+                    self.attacking = False
+                    self.attack_cooldown = 20
+
 def main():
 
     run = True
